@@ -15,6 +15,6 @@
     "jsx": "preserve",
     "incremental": true
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "pages/_document.js", "components/Banner"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "pages/_document.js", "components/Banner", "components/Modal/ModalsContext.js", "components/Modal/ModalsProvider.js"],
   "exclude": ["node_modules"]
 }

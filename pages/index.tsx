@@ -4,13 +4,13 @@ import { Banner } from '../components/Banner';
 import styled from 'styled-components';
 import { Tab } from '../components/Tab';
 import { useRecoilState } from 'recoil';
-import { tab } from '../recoil/Tab';
+import { tabState } from '../recoil/Tab';
 import { useCallback } from 'react';
 import { Schedule } from '../components/Schedule';
 import { ScheduleDayList, TabList } from '../constants/constant';
 import { Event } from '../components/Event';
 const Home: NextPage = () => {
-  const [clickedTab, setClickedTab] = useRecoilState(tab);
+  const [clickedTab, setClickedTab] = useRecoilState(tabState);
 
   const handleClickTab = useCallback(
     (index: number) => {

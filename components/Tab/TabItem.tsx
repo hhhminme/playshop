@@ -1,6 +1,6 @@
 import { useRecoilValue } from 'recoil';
 import styled from 'styled-components';
-import { tab } from '../../recoil/Tab';
+import { tabState } from '../../recoil/Tab';
 
 interface TabItemProps {
   id: number;
@@ -22,7 +22,7 @@ export function TabItem({
   subTitle,
   onClick,
 }: TabItemProps) {
-  const clickedId = useRecoilValue(tab);
+  const clickedId = useRecoilValue(tabState);
   return (
     <TabContainer tabId={id} clickedId={clickedId}>
       <li onClick={() => onClick?.()}>
