@@ -1,6 +1,7 @@
 import styled, { Keyframes, keyframes } from 'styled-components';
 import Image from 'next/image';
 import { useState } from 'react';
+
 export function Banner() {
   const [day, setDay] = useState<string>();
   var dday = new Date('October 13, 2022, 11:00:00').getTime();
@@ -25,7 +26,7 @@ export function Banner() {
             제니와 허브가 준비한 다양한 이벤트와 행사 일정을 바로 만나보세요.
           </SubTitle>
           <Desc>
-            이번 플레이샵은 대부도에 위차한 실내온수풀 독채 윈도우즈 월드D에서
+            이번 플레이샵은 대부도에 위치한 실내온수풀 독채 윈도우즈 월드D에서
             1박 2일 간 진행됩니다.
           </Desc>
           <Desc>

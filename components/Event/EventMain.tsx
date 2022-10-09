@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { useRecoilValue } from 'recoil';
 import styled from 'styled-components';
 import { useManittoQuery } from '../../api/manitto';
@@ -25,7 +25,6 @@ function EventMain() {
   };
 
   const handleQuiz = () => {
-    console.log(clickedName, sign);
     ManittoResult.refetch();
   };
 
@@ -60,7 +59,7 @@ function EventMain() {
           마니또는 당신의 존재를 모르며 당신 또한 마니또에게 존재를 들켜선
           안됩니다.
           <br />
-          저녁 식사 전까지 마니또를 위한 미션을 성공하고 경품 받아가세요!
+          저녁 식사 전까지 마니또를 위한 미션을 성공하고 경품 받아 가세요!
         </p>
 
         {showEvent ? (
@@ -82,7 +81,7 @@ function EventMain() {
                   {ManittoResult.isSuccess && (
                     <div>
                       <p>
-                        {clickedName}의 마니또는
+                        당신의 마니또는
                         <span> {ManittoResult.data.manitto}</span> 입니다.
                       </p>
                       <p>
@@ -92,9 +91,7 @@ function EventMain() {
                   )}
                   {ManittoResult.isError && (
                     <div>
-                      <p>
-                        분기처리는 저도 해놨어요! 암호를 다시 한번 확인해주세요.
-                      </p>
+                      <p>암호를 다시 한번 확인해주세요.</p>
                     </div>
                   )}
                   <Input

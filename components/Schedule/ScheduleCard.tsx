@@ -52,6 +52,7 @@ export function ScheduleCard({
           objectFit="contain"
           alt="schedule_img"
           quality={30}
+          priority
         />
       </ImageWrap>
       <CardContent hover={hover}>
