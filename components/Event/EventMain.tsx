@@ -82,7 +82,7 @@ function EventMain() {
                   {ManittoResult.isSuccess && (
                     <div>
                       <p>
-                        당신의 마니또는
+                        {clickedName}의 마니또는
                         <span> {ManittoResult.data.manitto}</span> 입니다.
                       </p>
                       <p>
