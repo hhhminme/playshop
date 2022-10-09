@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import { Children, useReducer, useState } from 'react';
+import { useReducer } from 'react';
 import styled from 'styled-components';
 
 interface ScheduleCardProps {
@@ -46,7 +46,13 @@ export function ScheduleCard({
   return (
     <CardWrapper onMouseOver={handleHover} onMouseLeave={handleLeave}>
       <ImageWrap hover={hover}>
-        <Image src={src} layout="fill" objectFit="cover" alt="schedule_img" />
+        <Image
+          src={src}
+          layout="fill"
+          objectFit="contain"
+          alt="schedule_img"
+          quality={30}
+        />
       </ImageWrap>
       <CardContent hover={hover}>
         <h3>{title}</h3>
@@ -81,7 +87,7 @@ const ImageWrap = styled.div<ScheduleCardStyleProps>`
     overflow: 'hidden';
   }
 
-  box-shadow: ${(p) => p.hover && 'var(--shadow-l)'};
+  // box-shadow: ${(p) => p.hover && 'var(--shadow-l)'};
   top: ${(p) => p.hover && '-7%'};
 `;
 
