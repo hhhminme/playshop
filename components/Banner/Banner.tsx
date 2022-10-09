@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { Keyframes, keyframes } from 'styled-components';
 import Image from 'next/image';
 import { useState } from 'react';
 export function Banner() {
@@ -19,7 +19,7 @@ export function Banner() {
   return (
     <Container>
       <Inner>
-        <ContentLeft>
+        <ContentLeft boxFade={boxFade}>
           <Title>2022 콜라비 플레이샵에 여러분을 초대합니다.</Title>
           <SubTitle>
             제니와 허브가 준비한 다양한 이벤트와 행사 일정을 바로 만나보세요.
@@ -45,6 +45,15 @@ export function Banner() {
   );
 }
 
+const boxFade = keyframes`
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+`;
+
 const Container = styled.section`
   margin-top: var(--navbar-height);
   display: flex;
@@ -57,7 +66,8 @@ const Inner = styled.div`
   display: flex;
   padding: 0 var(--padding-container-base);
 `;
-const ContentLeft = styled.div`
+const ContentLeft = styled.div<{ boxFade: Keyframes }>`
+  animation: ${boxFade} 1s linear;
   padding-top: 5rem;
   flex-grow: 1;
 `;

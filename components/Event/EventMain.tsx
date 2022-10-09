@@ -1,13 +1,33 @@
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 import { useRecoilValue } from 'recoil';
 import styled from 'styled-components';
 import { avatarState } from '../../recoil/Avatar';
 import { Avatar } from '../Avatar';
+import axios from 'axios';
+
+interface manittoResponse {
+  manitto: 'string';
+  mission: 'string';
+}
+
 function EventMain() {
   const [showEvent, setShowEvent] = useState(false);
+  const [sign, setSign] = useState('');
   const clickedName = useRecoilValue(avatarState);
   const handleClick = () => {
     setShowEvent(true);
+  };
+
+  const handleQuiz = async () => {
+    console.log(clickedName, sign);
+    try {
+      const { data } = await axios.get<manittoResponse>(
+        `https://playshop.office.openur.biz/manitto?name=${clickedName}&secret=${sign}`
+      );
+      console.log(data);
+    } catch (err) {
+      console.log(err);
+    }
   };
 
   const userList = [
@@ -52,16 +72,19 @@ function EventMain() {
                 <Avatar key={name} name={name} />
               ))}
             </AvatarWrap>
+
             <div>
               {clickedName !== '' && (
                 <div>
                   <h4>
-                    반가워요! {clickedName} <br />
+                    반가워요! {clickedName} 👋 <br />
                     저희가 알려드린 암호를 입력해주세요.
                   </h4>
-                  <div>
-                    <Input placeholder="ex) 요즘잘자쿨냥이" />
-                  </div>
+                  <Input
+                    placeholder="ex) 요즘잘자쿨냥이"
+                    onChange={(e) => setSign(e.target.value)}
+                  />
+                  <EventButton onClick={handleQuiz}>확인하기</EventButton>
                 </div>
               )}
             </div>
@@ -134,8 +157,9 @@ const Input = styled.input`
   width: 200px;
   height: 50px;
   border: 1px solid var(--grey200);
-  border-radius: var(--radius-l);
-  padding-left: 10px;
+  border-radius: var(--btn-border-radius);
+  padding: var(--padding-s-horizontal);
+  margin-right: var(--padding-l-horizontal);
   :focus {
     outline: none !important;
   }

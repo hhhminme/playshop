@@ -21,8 +21,8 @@ export function Avatar({ name }: AvatarProps) {
     >
       <Image
         src={`/avatar/${name}.svg`}
-        width={120}
-        height={120}
+        width={110}
+        height={110}
         alt="avatar"
       />
       <p>{name}</p>
