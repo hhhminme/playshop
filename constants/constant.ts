@@ -83,3 +83,7 @@ export const ScheduleDayList = [
     },
   ],
 ];
+
+export const queryKey = {
+  manitto: ['manitto'] as const,
+};

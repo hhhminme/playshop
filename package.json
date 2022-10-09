@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@tanstack/react-query": "^4.10.3",
     "@types/styled-components": "^5.1.26",
     "axios": "^1.1.2",
     "babel-plugin-styled-components": "^2.0.7",

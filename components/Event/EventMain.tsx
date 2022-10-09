@@ -1,33 +1,32 @@
 import React, { useRef, useState } from 'react';
 import { useRecoilValue } from 'recoil';
 import styled from 'styled-components';
+import { useManittoQuery } from '../../api/manitto';
 import { avatarState } from '../../recoil/Avatar';
 import { Avatar } from '../Avatar';
-import axios from 'axios';
-
-interface manittoResponse {
-  manitto: 'string';
-  mission: 'string';
-}
 
 function EventMain() {
   const [showEvent, setShowEvent] = useState(false);
   const [sign, setSign] = useState('');
   const clickedName = useRecoilValue(avatarState);
+  const ManittoResult = useManittoQuery(clickedName, sign, {
+    retry: 0,
+    enabled: false,
+    onSuccess: (data) => {
+      console.log(data);
+    },
+    onError: (err) => {
+      console.log(err);
+    },
+  });
+
   const handleClick = () => {
     setShowEvent(true);
   };
 
-  const handleQuiz = async () => {
+  const handleQuiz = () => {
     console.log(clickedName, sign);
-    try {
-      const { data } = await axios.get<manittoResponse>(
-        `https://playshop.office.openur.biz/manitto?name=${clickedName}&secret=${sign}`
-      );
-      console.log(data);
-    } catch (err) {
-      console.log(err);
-    }
+    ManittoResult.refetch();
   };
 
   const userList = [
@@ -80,6 +79,24 @@ function EventMain() {
                     반가워요! {clickedName} 👋 <br />
                     저희가 알려드린 암호를 입력해주세요.
                   </h4>
+                  {ManittoResult.isSuccess && (
+                    <div>
+                      <p>
+                        당신의 마니또는
+                        <span> {ManittoResult.data.manitto}</span> 입니다.
+                      </p>
+                      <p>
+                        미션은 <span>{ManittoResult.data.mission}</span> 입니다.
+                      </p>
+                    </div>
+                  )}
+                  {ManittoResult.isError && (
+                    <div>
+                      <p>
+                        분기처리는 저도 해놨어요! 암호를 다시 한번 확인해주세요.
+                      </p>
+                    </div>
+                  )}
                   <Input
                     placeholder="ex) 요즘잘자쿨냥이"
                     onChange={(e) => setSign(e.target.value)}
@@ -128,6 +145,11 @@ const Inner = styled.div`
   p {
     margin-bottom: var(--padding-container-base);
     font-size: var(--font-size-p);
+
+    span {
+      font-size: var(--font-size-p);
+      font-weight: var(--font-weight-bold);
+    }
   }
 `;
 
