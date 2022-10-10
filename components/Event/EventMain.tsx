@@ -65,7 +65,7 @@ function EventMain() {
 
         {showEvent ? (
           <div>
-            <h4>자신의 케릭터를 골라주세요!</h4>
+            <h4>자신의 캐릭터를 골라주세요!</h4>
             <AvatarWrap>
               {userList.map((name) => (
                 <Avatar key={name} name={name} />
