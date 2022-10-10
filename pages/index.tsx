@@ -5,20 +5,30 @@ import styled from 'styled-components';
 import { Tab } from '../components/Tab';
 import { useRecoilState } from 'recoil';
 import { tabState } from '../recoil/Tab';
-import { useCallback } from 'react';
+import { useCallback, useRef } from 'react';
 import { Schedule } from '../components/Schedule';
 import { ScheduleDayList, TabList } from '../constants/constant';
 import { Event } from '../components/Event';
 import Head from 'next/head';
 const Home: NextPage = () => {
   const [clickedTab, setClickedTab] = useRecoilState(tabState);
+  const scheduleRef = useRef<HTMLDivElement>(null);
 
   const handleClickTab = useCallback(
     (index: number) => {
       setClickedTab(index);
+      setTimeout(
+        () =>
+          scheduleRef.current?.scrollIntoView({
+            block: 'start',
+            behavior: 'smooth',
+          }),
+        100
+      );
     },
     [setClickedTab]
   );
+
   return (
     <Container>
       <Head>
@@ -41,31 +51,35 @@ const Home: NextPage = () => {
           ))}
       </Tab>
       {clickedTab === 0 ? (
-        <Schedule>
-          {ScheduleDayList[0].length > 0 &&
-            ScheduleDayList[0].map(({ src, title, subTitle, time }) => (
-              <Schedule.card
-                key={title}
-                src={src}
-                title={title}
-                subTitle={subTitle}
-                time={time}
-              />
-            ))}
-        </Schedule>
+        <div ref={scheduleRef}>
+          <Schedule>
+            {ScheduleDayList[0].length > 0 &&
+              ScheduleDayList[0].map(({ src, title, subTitle, time }) => (
+                <Schedule.card
+                  key={title}
+                  src={src}
+                  title={title}
+                  subTitle={subTitle}
+                  time={time}
+                />
+              ))}
+          </Schedule>
+        </div>
       ) : (
-        <Schedule>
-          {ScheduleDayList[1].length > 0 &&
-            ScheduleDayList[1].map(({ src, title, subTitle, time }) => (
-              <Schedule.card
-                key={title}
-                src={src}
-                title={title}
-                subTitle={subTitle}
-                time={time}
-              />
-            ))}
-        </Schedule>
+        <div ref={scheduleRef}>
+          <Schedule>
+            {ScheduleDayList[1].length > 0 &&
+              ScheduleDayList[1].map(({ src, title, subTitle, time }) => (
+                <Schedule.card
+                  key={title}
+                  src={src}
+                  title={title}
+                  subTitle={subTitle}
+                  time={time}
+                />
+              ))}
+          </Schedule>
+        </div>
       )}
       <Event />
     </Container>
