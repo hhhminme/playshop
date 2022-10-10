@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import Link from 'next/link';
 import styled from 'styled-components';
 
 interface NavigationTitleProps {
@@ -8,21 +9,24 @@ interface NavigationTitleProps {
 
 export function NavigationLogo({ logo, children }: NavigationTitleProps) {
   return (
-    <Container>
-      {logo && (
-        <Image
-          src="/images/collabee_logo.jpg"
-          width={40}
-          height={40}
-          alt="nav_logo"
-        />
-      )}
-      <Title>{children}</Title>
-    </Container>
+    <Link href="/">
+      <Container>
+        {logo && (
+          <Image
+            src="/images/collabee_logo.jpg"
+            width={40}
+            height={40}
+            alt="nav_logo"
+          />
+        )}
+        <Title>{children}</Title>
+      </Container>
+    </Link>
   );
 }
 
 const Container = styled.div`
+  cursor: pointer;
   display: flex;
   align-items: center;
 `;
