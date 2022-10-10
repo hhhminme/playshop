@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { devices } from '../../constants/constant';
 import { ScheduleCard } from './ScheduleCard';
 
 interface ScheduleProps {
@@ -26,7 +27,7 @@ const Container = styled.div`
 
 const Inner = styled.div`
   display: flex;
-  padding: 0 var(--padding-container-base);
-  width: 1100px;
+
+  max-width: 1100px;
   flex-direction: column;
 `;

@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import { useReducer } from 'react';
 import styled from 'styled-components';
+import { devices } from '../../constants/constant';
 
 interface ScheduleCardProps {
   src: string;
@@ -67,8 +68,8 @@ export function ScheduleCard({
 const CardWrapper = styled.div`
   cursor: pointer;
   display: flex;
-  width: 900px;
-  height: 200px;
+  width: 100%;
+  height: auto;
   margin-bottom: var(--padding-container-base);
 
   :last-child {
@@ -77,11 +78,15 @@ const CardWrapper = styled.div`
 `;
 
 const ImageWrap = styled.div<ScheduleCardStyleProps>`
-  flex-shrink: 0;
   position: relative;
   width: 200px;
   height: 200px;
   border-radius: var(--radius-m);
+  flex-shrink: 0;
+  @media ${devices.mobile} {
+    width: 140px;
+    height: 140px;
+  }
 
   img {
     border-radius: var(--radius-m);
@@ -96,12 +101,20 @@ const CardContent = styled.div<ScheduleCardStyleProps>`
   display: flex;
   flex-direction: column;
   margin-left: var(--padding-container-base);
+  @media ${devices.mobile} {
+    margin-left: var(--padding-l-horizontal);
+
+    font-size: var(--font-size-h4);
+  }
 
   h3 {
     font-size: var(--font-size-h3);
     font-weight: var(--font-weight-bold);
     color: ${(props) => props.hover && '#d7a601'};
     text-shadow: ${(p) => p.hover && '1px 1px 20px#fdf6e1'};
+    @media ${devices.mobile} {
+      font-size: var(--font-size-h4);
+    }
   }
   h6 {
     font-size: var(--font-size-h7);
@@ -114,5 +127,9 @@ const CardContent = styled.div<ScheduleCardStyleProps>`
     font-size: var(--font-size-p);
     font-weight: var(--font-weight-regular);
     color: var(--grey500);
+
+    @media ${devices.mobile} {
+      font-size: var(--font-size-sm);
+    }
   }
 `;

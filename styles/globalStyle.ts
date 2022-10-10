@@ -190,11 +190,13 @@ const GlobalStyle = createGlobalStyle`
     border: 0;
     vertical-align: baseline;
     font-size: 62.5%;
+    
   }
 
   html,body {
     font-family: Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
     line-height: 1.5;
+    width: 100%;
   }
   h1, h2, h3, h4, h5, h6, span, p, div {
     word-break: keep-all;

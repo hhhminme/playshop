@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import { useRecoilValue } from 'recoil';
 import styled from 'styled-components';
 import { useManittoQuery } from '../../api/manitto';
+import { devices } from '../../constants/constant';
 import { avatarState } from '../../recoil/Avatar';
 import { Avatar } from '../Avatar';
 
@@ -94,11 +95,13 @@ function EventMain() {
                       <p>암호를 다시 한번 확인해주세요.</p>
                     </div>
                   )}
-                  <Input
-                    placeholder="ex) 요즘잘자쿨냥이"
-                    onChange={(e) => setSign(e.target.value)}
-                  />
-                  <EventButton onClick={handleQuiz}>확인하기</EventButton>
+                  <Quiz>
+                    <Input
+                      placeholder="ex) 요즘잘자쿨냥이"
+                      onChange={(e) => setSign(e.target.value)}
+                    />
+                    <EventButton onClick={handleQuiz}>확인하기</EventButton>
+                  </Quiz>
                 </div>
               )}
             </div>
@@ -125,8 +128,7 @@ const Container = styled.div`
 
 const Inner = styled.div`
   display: flex;
-  padding: 0 var(--padding-container-base);
-  width: 1100px;
+  max-width: 1100px;
   flex-direction: column;
   text-align: center;
   align-items: center;
@@ -181,5 +183,21 @@ const Input = styled.input`
   margin-right: var(--padding-l-horizontal);
   :focus {
     outline: none !important;
+  }
+
+  @media ${devices.mobile} {
+    margin-right: 0;
+  }
+`;
+const Quiz = styled.div`
+  @media ${devices.mobile} {
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+
+    input {
+      margin-bottom: var(--padding-l-vertical);
+    }
   }
 `;

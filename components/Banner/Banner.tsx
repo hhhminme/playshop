@@ -1,6 +1,7 @@
 import styled, { Keyframes, keyframes } from 'styled-components';
 import Image from 'next/image';
 import { useState } from 'react';
+import { devices } from '../../constants/constant';
 
 export function Banner() {
   const [day, setDay] = useState<string>();
@@ -62,15 +63,20 @@ const Container = styled.section`
   width: 100%;
 `;
 const Inner = styled.div`
-  width: 1440px;
+  max-width: 1440px;
   height: auto;
   display: flex;
+
   padding: 0 var(--padding-container-base);
+  @media ${devices.mobile} {
+    flex-direction: column;
+    justify-content: center;
+  }
 `;
 const ContentLeft = styled.div<{ boxFade: Keyframes }>`
   animation: ${boxFade} 1s linear;
   padding-top: 5rem;
-  flex-grow: 1;
+  flex: 1;
 `;
 const ContentRight = styled.div`
   padding-top: var(--padding-container-base);

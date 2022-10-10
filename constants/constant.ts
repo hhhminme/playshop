@@ -88,3 +88,15 @@ export const ScheduleDayList = [
 export const queryKey = {
   manitto: ['manitto'] as const,
 };
+
+export const sizes = {
+  mobile: '500px',
+  tablet: '768px',
+  laptop: '1440px',
+};
+
+export const devices = {
+  mobile: `(max-width:${sizes.mobile})`,
+  tablet: `(max-width:${sizes.tablet})`,
+  laptop: `(max-width:${sizes.laptop})`,
+};
