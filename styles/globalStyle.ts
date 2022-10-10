@@ -198,9 +198,18 @@ const GlobalStyle = createGlobalStyle`
     line-height: 1.5;
     width: 100%;
   }
+
   h1, h2, h3, h4, h5, h6, span, p, div {
     word-break: keep-all;
     white-space: pre-wrap;
+  }
+
+  input,
+  textarea,
+  button,
+  select,
+  a {
+  -webkit-tap-highlight-color: rgba(0,0,0,0);
   }
 `;
 
