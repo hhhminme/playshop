@@ -9,3 +9,11 @@
 - React query
 - Recoil
 - styled-component
+
+## Performance Insight
+아직 최적화 작업을 하지 못해서 한번 최적화 작업도 같이 진행해볼 예정입니다.
+
+- Mobile
+<img width="514" alt="image" src="https://user-images.githubusercontent.com/54930877/194825142-70c52eb9-0113-43ed-8825-39f73bb7a641.png">
+- Desktop 
+<img width="526" alt="image" src="https://user-images.githubusercontent.com/54930877/194825212-a1c731c4-9900-430d-9e99-5529dbaab1d7.png">
