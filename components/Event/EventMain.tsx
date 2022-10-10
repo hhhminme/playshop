@@ -7,9 +7,13 @@ import { avatarState } from '../../recoil/Avatar';
 import { Avatar } from '../Avatar';
 
 function EventMain() {
+  const clickedName = useRecoilValue(avatarState);
   const [showEvent, setShowEvent] = useState(false);
   const [sign, setSign] = useState('');
-  const clickedName = useRecoilValue(avatarState);
+
+  const avatarRef = useRef<HTMLDivElement>(null);
+  const eventRef = useRef<HTMLHeadingElement>(null);
+
   const ManittoResult = useManittoQuery(clickedName, sign, {
     retry: 0,
     enabled: false,
@@ -23,6 +27,21 @@ function EventMain() {
 
   const handleClick = () => {
     setShowEvent(true);
+    setTimeout(
+      () =>
+        avatarRef.current?.scrollIntoView({
+          block: 'start',
+          behavior: 'smooth',
+        }),
+      100
+    );
+  };
+
+  const handleAvatarClick = async () => {
+    setTimeout(
+      () => eventRef.current?.scrollIntoView({ behavior: 'smooth' }),
+      100
+    );
   };
 
   const handleQuiz = () => {
@@ -64,9 +83,9 @@ function EventMain() {
         </p>
 
         {showEvent ? (
-          <div>
+          <div ref={avatarRef}>
             <h4>자신의 캐릭터를 골라주세요!</h4>
-            <AvatarWrap>
+            <AvatarWrap onClick={handleAvatarClick}>
               {userList.map((name) => (
                 <Avatar key={name} name={name} />
               ))}
@@ -75,7 +94,7 @@ function EventMain() {
             <div>
               {clickedName !== '' && (
                 <div>
-                  <h4>
+                  <h4 ref={eventRef}>
                     반가워요! {clickedName} 👋 <br />
                     저희가 알려드린 암호를 입력해주세요.
                   </h4>
@@ -140,6 +159,10 @@ const Inner = styled.div`
   h4 {
     margin-bottom: var(--padding-container-base);
     font-size: var(--font-size-h4);
+
+    @media ${devices.mobile} {
+      margin-top: var(--navbar-height);
+    }
   }
   p {
     margin-bottom: var(--padding-container-base);

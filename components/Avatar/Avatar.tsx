@@ -11,7 +11,7 @@ interface AvatarProps {
 export function Avatar({ name }: AvatarProps) {
   const [clickedName, setClickedName] = useRecoilState(avatarState);
 
-  const handleClick = () => {
+  const handleClick = async () => {
     setClickedName(name);
   };
   return (
