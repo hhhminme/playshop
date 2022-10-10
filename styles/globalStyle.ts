@@ -190,7 +190,7 @@ const GlobalStyle = createGlobalStyle`
     border: 0;
     vertical-align: baseline;
     font-size: 62.5%;
-    
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
   }
 
   html,body {
@@ -202,14 +202,6 @@ const GlobalStyle = createGlobalStyle`
   h1, h2, h3, h4, h5, h6, span, p, div {
     word-break: keep-all;
     white-space: pre-wrap;
-  }
-
-  input,
-  textarea,
-  button,
-  select,
-  a {
-  -webkit-tap-highlight-color: rgba(0,0,0,0);
   }
 `;
 
