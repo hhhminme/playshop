@@ -39,9 +39,15 @@ class MyDocument extends Document {
       <Html>
         <Head>
           <meta
-            name="viewport"
-            content="width=device-width,initial-scale=1.0,user-scalable=no,maximum-scale=1"
+            name="description"
+            content="2022 콜라비 플레이샵에 여러분을 초대 합니다."
           />
+          <link rel="shortcut icon" href="/images/favicon.ico" />
+          <meta property="og:image" content="/images/banner.png" />
+          <meta property="og:title" content="2022 콜라비 플레이샵" />
+          <meta property="og:type" content="website" />
+          <meta property="og:url" content="https://playshop.vercel.app" />
+          <meta property="og:article:author" content="허브" />
           <link
             rel="stylesheet"
             as="style"

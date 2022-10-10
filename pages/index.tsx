@@ -9,6 +9,7 @@ import { useCallback } from 'react';
 import { Schedule } from '../components/Schedule';
 import { ScheduleDayList, TabList } from '../constants/constant';
 import { Event } from '../components/Event';
+import Head from 'next/head';
 const Home: NextPage = () => {
   const [clickedTab, setClickedTab] = useRecoilState(tabState);
 
@@ -20,6 +21,9 @@ const Home: NextPage = () => {
   );
   return (
     <Container>
+      <Head>
+        <title>콜라비 플레이샵</title>
+      </Head>
       <Navigation>
         <Navigation.Logo logo>2022 Collabee Playshop</Navigation.Logo>
       </Navigation>
