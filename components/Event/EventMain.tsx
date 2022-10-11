@@ -1,15 +1,15 @@
-import React, { useEffect, useRef, useState } from 'react';
-import { useRecoilValue } from 'recoil';
-import styled from 'styled-components';
-import { useManittoQuery } from '../../api/manitto';
-import { devices } from '../../constants/constant';
-import { avatarState } from '../../recoil/Avatar';
-import { Avatar } from '../Avatar';
+import React, { useEffect, useRef, useState } from "react";
+import { useRecoilValue } from "recoil";
+import styled from "styled-components";
+import { useManittoQuery } from "../../api/manitto";
+import { devices } from "../../constants/constant";
+import { avatarState } from "../../recoil/Avatar";
+import { Avatar } from "../Avatar";
 
 function EventMain() {
   const clickedName = useRecoilValue(avatarState);
   const [showEvent, setShowEvent] = useState(false);
-  const [sign, setSign] = useState('');
+  const [sign, setSign] = useState("");
 
   const avatarRef = useRef<HTMLDivElement>(null);
   const eventRef = useRef<HTMLHeadingElement>(null);
@@ -30,8 +30,8 @@ function EventMain() {
     setTimeout(
       () =>
         avatarRef.current?.scrollIntoView({
-          block: 'start',
-          behavior: 'smooth',
+          block: "start",
+          behavior: "smooth",
         }),
       100
     );
@@ -39,7 +39,7 @@ function EventMain() {
 
   const handleAvatarClick = async () => {
     setTimeout(
-      () => eventRef.current?.scrollIntoView({ behavior: 'smooth' }),
+      () => eventRef.current?.scrollIntoView({ behavior: "smooth" }),
       100
     );
   };
@@ -49,24 +49,26 @@ function EventMain() {
   };
 
   const userList = [
-    '에반',
-    '오제이',
-    '앨런',
-    '셀린',
-    '지미',
-    '문타리',
-    '루나',
-    '해리',
-    '길버트',
-    '이안',
-    '에티엔',
-    '제이슨',
-    '라이언',
-    '할리',
-    '앤드류',
-    '엘린',
-    '헬레나',
+    "에반",
+    "오제이",
+    "앨런",
+    "셀린",
+    "지미",
+    "문타리",
+    "루나",
+    "해리",
+    "길버트",
+    "이안",
+    "에티엔",
+    "제이슨",
+    "라이언",
+    "할리",
+    "앤드류",
+    "엘린",
+    "헬레나",
+    "크리스탈",
   ];
+
   return (
     <Container>
       <Inner>
@@ -92,7 +94,7 @@ function EventMain() {
             </AvatarWrap>
 
             <div>
-              {clickedName !== '' && (
+              {clickedName !== "" && (
                 <div>
                   <h4 ref={eventRef}>
                     반가워요! {clickedName} 👋 <br />
