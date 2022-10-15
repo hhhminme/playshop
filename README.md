@@ -19,3 +19,6 @@
 <img width="514" alt="image" src="https://user-images.githubusercontent.com/54930877/194825142-70c52eb9-0113-43ed-8825-39f73bb7a641.png">
 - Desktop 
 <img width="526" alt="image" src="https://user-images.githubusercontent.com/54930877/194825212-a1c731c4-9900-430d-9e99-5529dbaab1d7.png">
+
+## Retrospective
+[플레이샵 준비 회고글 바로가기](https://velog.io/@hhhminme/%EA%B0%9C%EB%B0%9C%EC%9E%90%EB%A5%BC-%EC%8A%A4%EC%8A%A4%EB%A1%9C-%EC%BD%94%EB%94%A9%ED%95%98%EB%8A%94-%EC%82%AC%EB%9E%8C%EC%9C%BC%EB%A1%9C-%EC%A0%95%EC%9D%98%ED%95%98%EC%A7%80-%EB%A7%90%EC%95%84%EC%A3%BC%EC%84%B8%EC%9A%94)
